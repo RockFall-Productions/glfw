@@ -1,7 +1,7 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
-	--staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -31,10 +31,8 @@ project "GLFW"
 		"src/null_joystick.c"
 	}
 	filter "system:linux"
-		pic "On"
-
 		systemversion "latest"
-		staticruntime "On"
+		pic "On"
 
 		files
 		{
@@ -57,7 +55,6 @@ project "GLFW"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
 
 		files
 		{
@@ -85,8 +82,6 @@ project "GLFW"
 		{
 			"Dwmapi.lib"
 		}
-	filter {"configurations:Release", "system:windows"}
-		buildoptions "/MT"
 
 
 	filter "configurations:Debug"
